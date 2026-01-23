@@ -760,7 +760,7 @@ func createTagsTable(db *sql.DB, allTags map[string]utilities.Tag) error {
 	// Create 'tags' table if not exists
 	_, err := db.Exec(`CREATE TABLE IF NOT EXISTS tags (
 			id TEXT PRIMARY KEY,
-			uri TEXT
+			uri TEXT UNIQUE
 		)`)
 	if err != nil {
 		log.Error().Err(err).Msg("Error creating 'tags' table")
