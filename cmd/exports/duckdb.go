@@ -302,7 +302,7 @@ func createAboutTable(db *sql.DB) error {
 			platform TEXT,
 			github_url TEXT,
 			generated_at TIMESTAMP DEFAULT date_trunc('second', CURRENT_TIMESTAMP AT TIME ZONE 'UTC'),
-			generated_at_TZ TIMESTAMPTZ DEFAULT date_trunc('second', CURRENT_TIMESTAMP)
+			generated_at_tz TIMESTAMPTZ DEFAULT date_trunc('second', CURRENT_TIMESTAMP)
 		)`)
 	if err != nil {
 		return fmt.Errorf("error creating 'about' table: %w", err)
@@ -322,7 +322,7 @@ func createAboutTable(db *sql.DB) error {
 		COMMENT ON COLUMN about.platform IS 'Operating system and architecture where geol was executed';
 		COMMENT ON COLUMN about.github_url IS 'GitHub repository URL for the geol project';
 		COMMENT ON COLUMN about.generated_at IS 'UTC timestamp when this database was generated';
-		COMMENT ON COLUMN about.generated_at_TZ IS 'Local timestamp with timezone when this database was generated';
+		COMMENT ON COLUMN about.generated_at_tz IS 'Local timestamp with timezone when this database was generated';
 	`)
 	if err != nil {
 		return fmt.Errorf("error adding comments to 'about' columns: %w", err)
