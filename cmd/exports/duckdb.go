@@ -300,7 +300,7 @@ func createAboutTable(db *sql.DB) error {
 			git_commit TEXT,
 			go_version TEXT,
 			platform TEXT,
-			github_URL TEXT,
+			github_url TEXT,
 			generated_at TIMESTAMP DEFAULT date_trunc('second', CURRENT_TIMESTAMP AT TIME ZONE 'UTC'),
 			generated_at_TZ TIMESTAMPTZ DEFAULT date_trunc('second', CURRENT_TIMESTAMP)
 		)`)
@@ -320,7 +320,7 @@ func createAboutTable(db *sql.DB) error {
 		COMMENT ON COLUMN about.git_commit IS 'Git commit hash of geol used to generate this database';
 		COMMENT ON COLUMN about.go_version IS 'Go compiler version used to build geol';
 		COMMENT ON COLUMN about.platform IS 'Operating system and architecture where geol was executed';
-		COMMENT ON COLUMN about.github_URL IS 'GitHub repository URL for the geol project';
+		COMMENT ON COLUMN about.github_url IS 'GitHub repository URL for the geol project';
 		COMMENT ON COLUMN about.generated_at IS 'UTC timestamp when this database was generated';
 		COMMENT ON COLUMN about.generated_at_TZ IS 'Local timestamp with timezone when this database was generated';
 	`)
@@ -329,7 +329,7 @@ func createAboutTable(db *sql.DB) error {
 	}
 
 	// Insert values into 'about' table
-	_, err = db.Exec(`INSERT INTO about (git_version, git_commit, go_version, platform, github_URL) 
+	_, err = db.Exec(`INSERT INTO about (git_version, git_commit, go_version, platform, github_url) 
 		VALUES (?, ?, ?, ?, ?)`,
 		utilities.Version, utilities.Commit, utilities.GoVersion,
 		fmt.Sprintf("%s/%s", utilities.PlatformOs, utilities.PlatformArch),
