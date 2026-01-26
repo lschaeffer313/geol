@@ -799,7 +799,8 @@ func createTagsTable(db *sql.DB, allTags map[string]utilities.Tag) error {
 	// Create 'tags' table if not exists
 	_, err := db.Exec(`CREATE TABLE IF NOT EXISTS tags (
 			id TEXT PRIMARY KEY,
-			uri TEXT UNIQUE
+			uri TEXT UNIQUE,
+			www TEXT
 		)`)
 	if err != nil {
 		log.Error().Err(err).Msg("Error creating 'tags' table")
@@ -817,6 +818,7 @@ func createTagsTable(db *sql.DB, allTags map[string]utilities.Tag) error {
 	_, err = db.Exec(`
 		COMMENT ON COLUMN tags.id IS 'Unique tag identifier (primary key)';
 		COMMENT ON COLUMN tags.uri IS 'URI to the tag page on endoflife.date';
+		COMMENT ON COLUMN tags.www IS 'Human-readable web URL to the tag page on endoflife.date';
 	`)
 	if err != nil {
 		log.Error().Err(err).Msg("Error adding comments to 'tags' columns")
@@ -827,6 +829,7 @@ func createTagsTable(db *sql.DB, allTags map[string]utilities.Tag) error {
 	type tagEntry struct {
 		id  string
 		uri string
+		www string
 	}
 	var allTagsSlice []tagEntry
 
@@ -834,6 +837,7 @@ func createTagsTable(db *sql.DB, allTags map[string]utilities.Tag) error {
 		allTagsSlice = append(allTagsSlice, tagEntry{
 			id:  tag.Name,
 			uri: tag.Uri,
+			www: "https://endoflife.date/tags/" + tag.Name,
 		})
 	}
 
@@ -841,7 +845,8 @@ func createTagsTable(db *sql.DB, allTags map[string]utilities.Tag) error {
 	// First insert all data into a temporary table, then insert sorted
 	_, err = db.Exec(`CREATE TEMP TABLE IF NOT EXISTS tags_temp (
 			id TEXT,
-			uri TEXT
+			uri TEXT,
+			www TEXT
 		)`)
 	if err != nil {
 		log.Error().Err(err).Msg("Error creating tags_temp table")
@@ -849,9 +854,10 @@ func createTagsTable(db *sql.DB, allTags map[string]utilities.Tag) error {
 	}
 
 	for _, entry := range allTagsSlice {
-		_, err = db.Exec(`INSERT INTO tags_temp (id, uri) VALUES (?, ?)`,
+		_, err = db.Exec(`INSERT INTO tags_temp (id, uri, www) VALUES (?, ?, ?)`,
 			entry.id,
 			entry.uri,
+			entry.www,
 		)
 		if err != nil {
 			log.Error().Err(err).Msgf("Error inserting tag %s into temp table", entry.id)
@@ -859,8 +865,8 @@ func createTagsTable(db *sql.DB, allTags map[string]utilities.Tag) error {
 	}
 
 	// Insert from temp table sorted by id
-	_, err = db.Exec(`INSERT INTO tags (id, uri) 
-		SELECT id, uri FROM tags_temp ORDER BY id`)
+	_, err = db.Exec(`INSERT INTO tags (id, uri, www) 
+		SELECT id, uri, www FROM tags_temp ORDER BY id`)
 	if err != nil {
 		log.Error().Err(err).Msg("Error inserting sorted tags")
 		return err
