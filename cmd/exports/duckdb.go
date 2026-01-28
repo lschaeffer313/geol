@@ -681,6 +681,7 @@ func createProductIdentifiersTable(db *sql.DB, allData *allProductsData) error {
 			product_id TEXT,
 			identifier_type TEXT,
 			identifier_value TEXT,
+			PRIMARY KEY (product_id, identifier_type, identifier_value),
 			FOREIGN KEY (product_id) REFERENCES products(id)
 		)`)
 	if err != nil {
