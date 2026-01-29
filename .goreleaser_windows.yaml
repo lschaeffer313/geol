@@ -17,9 +17,10 @@ builds:
         goarch: "386"
     binary: geol
     ldflags:
-      - "-X 'main.Version={{.Version}}'"
-      - "-X 'main.Commit={{.Commit}}'"
-      - "-X 'main.Date={{.Date}}'"
+      - "-X 'main.version={{.Version}}'"
+      - "-X 'main.commit={{.Commit}}'"
+      - "-X 'main.date={{.Date}}'"
+      - "-X 'main.builtBy=GoReleaser'"
 
 archives:
   - # this name template makes the OS and Arch compatible with the results of `uname`.
