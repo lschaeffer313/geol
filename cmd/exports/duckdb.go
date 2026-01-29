@@ -17,8 +17,8 @@ import (
 	"github.com/phuslu/log"
 	"github.com/spf13/cobra"
 
-	"github.com/opt-nc/geol/cmd/product"
-	"github.com/opt-nc/geol/utilities"
+	"github.com/opt-nc/geol/v2/cmd/product"
+	"github.com/opt-nc/geol/v2/utilities"
 )
 
 const (
@@ -333,7 +333,7 @@ func createAboutTable(db *sql.DB) error {
 		VALUES (?, ?, ?, ?, ?)`,
 		utilities.Version, utilities.Commit, utilities.GoVersion,
 		fmt.Sprintf("%s/%s", utilities.PlatformOs, utilities.PlatformArch),
-		"https://github.com/opt-nc/geol")
+		"https://github.com/opt-nc/geol/v2")
 	log.Info().Msg("Inserted metadata into \"about\" table")
 	if err != nil {
 		return fmt.Errorf("error inserting into 'about' table: %w", err)
