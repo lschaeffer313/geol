@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"charm.land/lipgloss/v2"
-	"github.com/opt-nc/geol/utilities"
+	"github.com/opt-nc/geol/v2/utilities"
 	"github.com/phuslu/log"
 
 	"github.com/common-nighthawk/go-figure"
