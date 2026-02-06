@@ -12,10 +12,6 @@ linters:
     - gofmt
     - goimports
 
-output:
-  formats:
-    - format: colored-line-number
-
 settings:
   revive:
     rules:
