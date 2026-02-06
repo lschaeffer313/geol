@@ -15,7 +15,7 @@ import (
 
 	"charm.land/lipgloss/v2"
 	"charm.land/lipgloss/v2/table"
-	"github.com/opt-nc/geol/utilities"
+	"github.com/opt-nc/geol/v2/utilities"
 	"github.com/phuslu/log"
 	"github.com/spf13/cobra"
 )
@@ -28,10 +28,11 @@ func init() {
 }
 
 type stackItem struct {
-	Name    string `yaml:"name"`
-	Version string `yaml:"version"`
-	IdEol   string `yaml:"id_eol"`
-	Skip    bool   `yaml:"skip,omitempty"`
+	Name                 string `yaml:"name"`
+	Version              string `yaml:"version"`
+	IdEol                string `yaml:"id_eol"`
+	Skip                 bool   `yaml:"skip,omitempty"`
+	ShouldAlwaysBeLatest bool   `yaml:"always-latest,omitempty"`
 }
 type geolConfig struct {
 	AppName string      `yaml:"app_name"`
@@ -49,9 +50,10 @@ type stackTableRow struct {
 }
 
 // getStackTableRows returns a slice of StackTableRow for a given stack and today date
-func getStackTableRows(stack []stackItem, today time.Time) ([]stackTableRow, bool) {
+func getStackTableRows(stack []stackItem, today time.Time) ([]stackTableRow, bool, []string) {
 	rows := []stackTableRow{}
 	errorOut := false
+	violations := []string{}
 
 	for _, item := range stack {
 		// Skip items marked with skip: true
@@ -102,6 +104,12 @@ func getStackTableRows(stack []stackItem, today time.Time) ([]stackTableRow, boo
 			IsLatest:      isLatest,
 			LatestVersion: latestVersion,
 		})
+
+		// Check always-latest flag
+		if item.ShouldAlwaysBeLatest && !isLatest {
+			violations = append(violations, fmt.Sprintf("%s %s is not the latest version (latest: %s)", item.Name, item.Version, latestVersion))
+			violations = append(violations, fmt.Sprintf("%s should be in the latest version (current: %s, latest: %s)", item.Name, item.Version, latestVersion))
+		}
 	}
 	// Sort rows by Status: EOL, WARN, OK, INFO, then by Days (from smallest to largest)
 	statusOrder := map[string]int{"EOL": 0, "WARN": 1, "OK": 2}
@@ -137,7 +145,7 @@ func getStackTableRows(stack []stackItem, today time.Time) ([]stackTableRow, boo
 		// fallback to lexicographical if problem
 		return rows[i].Days < rows[j].Days
 	})
-	return rows, errorOut
+	return rows, errorOut, violations
 }
 
 // lookupEolDate should return the EOL date for a given id_eol and version (YYYY-MM-DD)
@@ -418,7 +426,7 @@ geol check --json`,
 
 		utilities.AnalyzeCacheProductsValidity(cmd)
 		today := time.Now()
-		rows, errorOut := getStackTableRows(config.Stack, today)
+		rows, errorOut, violations := getStackTableRows(config.Stack, today)
 
 		if jsonOutput {
 			output := struct {
@@ -441,6 +449,13 @@ geol check --json`,
 				Render("## " + config.AppName)
 			_, _ = lipgloss.Println(styledTitle)
 			_, _ = lipgloss.Println(tableStr)
+		}
+
+		if len(violations) > 0 {
+			for _, violation := range violations {
+				log.Error().Msg(violation)
+			}
+			log.Fatal().Msg("Some products have always-latest flag set but are not on the latest version")
 		}
 
 		if errorOut && strict {
