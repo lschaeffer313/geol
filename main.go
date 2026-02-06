@@ -27,14 +27,6 @@ func main() {
 			if info.Main.Version != "(devel)" {
 				utilities.Version = info.Main.Version
 			}
-			for _, s := range info.Settings {
-				switch s.Key {
-				case "vcs.revision":
-					commit = s.Value
-				case "vcs.time":
-					date = s.Value
-				}
-			}
 		}
 	}
 	utilities.Commit = commit

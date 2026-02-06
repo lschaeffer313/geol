@@ -66,8 +66,9 @@ brew install --cask opt-nc/homebrew-tap/geol
 Or simply with `go`:
 
 ```sh
-go install github.com/opt-nc/geol@latest
+go install github.com/opt-nc/geol/v2@latest
 ```
+
 Or with shell script:
 
 ```sh

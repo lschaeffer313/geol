@@ -28,10 +28,6 @@ stack:
     version: "3.6"
     id_eol: apache-maven
 
-  - name: traefik
-    version: "2.11"
-    id_eol: traefik
-
   # Example: Using the skip field for products not yet in endoflife.date API
   # The skip field allows you to:
   # - Keep the product in your inventory for other tools (export, reporting)
@@ -42,3 +38,14 @@ stack:
     version: "1.0"
     id_eol: non-existent-product
     skip: true
+
+  # Example: Using the always-latest flag for products that should always be on the latest version
+  # The always-latest field allows you to:
+  # - Mark products that your organization requires to be on the latest version
+  # - Get warnings/alerts when not using the most recent release
+  # - Enforce up-to-date policies for critical components
+  - name: traefik-latest
+    version: "3.2"
+    id_eol: traefik
+    always-latest: true
+
