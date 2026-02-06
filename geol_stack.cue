@@ -36,4 +36,11 @@ stack: [...{
     // Products with skip: true remain in the YAML for tracking
     // but are not checked against the endoflife.date API.
     skip?: bool | *false
+
+    // always-latest: whether this product should always be on the latest version.
+    // Optional field. Defaults to false if not specified.
+    // Set to true to mark products that your organization requires to be on the latest version.
+    // This allows you to get alerts when not using the most recent release
+    // and helps enforce up-to-date policies for critical components.
+    always-latest?: bool | *false
 }]
