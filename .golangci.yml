@@ -12,7 +12,7 @@ linters:
     - gofmt
     - goimports
 
-settings:
+linters-settings:
   revive:
     rules:
       - name: var-naming
