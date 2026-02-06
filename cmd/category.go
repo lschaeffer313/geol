@@ -43,7 +43,7 @@ geol category cloud`,
 			log.Fatal().Msgf("Category '%s' not found in cache", category)
 		}
 
-		url := utilities.ApiUrl + "categories/" + category
+		url := utilities.APIUrl + "categories/" + category
 		resp, err := http.Get(url)
 		if err != nil {
 			log.Fatal().Err(err).Msgf("Error requesting category '%s'", category)

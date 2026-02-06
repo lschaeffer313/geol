@@ -73,7 +73,7 @@ geol product describe nodejs`,
 			}
 
 			// API request for this product
-			url := utilities.ApiUrl + "products/" + prod
+			url := utilities.APIUrl + "products/" + prod
 			resp, err := http.Get(url)
 			if err != nil {
 				log.Fatal().Err(err).Msgf("Error requesting %s", prod)

@@ -61,7 +61,7 @@ func FetchAndSaveProducts(cmd *cobra.Command) error {
 	}
 
 	// HTTP GET request (extracted)
-	resp, err := GetAPIResponse(ApiUrl + "products")
+	resp, err := GetAPIResponse(APIUrl + "products")
 	if err != nil {
 		log.Error().Err(err).Msg("Error during HTTP request")
 		return err

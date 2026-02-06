@@ -279,7 +279,7 @@ func renderProductTable(prod ProductReleases, numberFlag int, mdFlag bool, isFir
 
 // FetchProductData retrieves product release data from the API
 func FetchProductData(productName string) (ProductReleases, error) {
-	url := utilities.ApiUrl + "products/" + productName
+	url := utilities.APIUrl + "products/" + productName
 	resp, err := http.Get(url)
 	if err != nil {
 		return ProductReleases{}, fmt.Errorf("error requesting %s: %w", productName, err)
