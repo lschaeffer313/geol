@@ -6,3 +6,4 @@ stack:
   - name: Go
     version: "1.25"
     id_eol: go
+    always-latest: true
