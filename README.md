@@ -45,7 +45,7 @@ Its ambitions are to :
 - [♾️ Efficient stack management with eol on GitHub 🧑‍🤝‍🧑](https://dev.to/optnc/efficient-stack-management-with-eol-on-github-24g8)
 - [🔬 Gitlab 15.8 analysis w. endoflife.date, grype, (x)eol 🐋](https://dev.to/optnc/gitlab-158-analysis-w-endoflifedate-grype-xeol-24b0)
 - [endoflife.date Series' Articles](https://dev.to/adriens/series/21232)
-
+- [⏳ Managing EOLs w. `geol`: the impossible `1'` Mux demo](https://dev.to/adriens/managing-eols-w-geol-the-impossible-1-mux-demo-cnl)
 
 # 🚀 QuickStart
 
@@ -59,14 +59,16 @@ To install:
 With `brew`:
 
 ```sh
+brew install curl
 brew install --cask opt-nc/homebrew-tap/geol
 ```
 
 Or simply with `go`:
 
 ```sh
-go install github.com/opt-nc/geol@latest
+go install github.com/opt-nc/geol/v2@latest
 ```
+
 Or with shell script:
 
 ```sh
