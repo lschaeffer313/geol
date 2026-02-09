@@ -10,6 +10,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const tagBaseURL = "https://endoflife.date/api/v1/tags/"
+
 type Tag struct {
 	Name string `json:"name"`
 	Uri  string `json:"uri"`
@@ -34,7 +36,7 @@ func FetchAndSaveTags(cmd *cobra.Command) error {
 		return err
 	}
 	// HTTP GET request (extracted)
-	resp, err := GetAPIResponse(ApiUrl + "tags")
+	resp, err := GetAPIResponse(APIUrl + "tags")
 	if err != nil {
 		log.Error().Err(err).Msg("Error during HTTP request")
 		return err
@@ -105,7 +107,7 @@ func GetTagsWithCacheRefresh(cmd *cobra.Command, tagsPath string) (TagsFile, err
 	return tags, nil
 }
 
-// readAndUnmarshalTags lit le fichier et fait l'unmarshal JSON dans tags.
+// readAndUnmarshalTags reads the file and unmarshals the JSON contents into tags.
 func readAndUnmarshalTags(tagsPath string, tags *TagsFile) error {
 	data, err := os.ReadFile(tagsPath)
 	if err != nil {
@@ -124,7 +126,7 @@ func ConvertTagStringsToTags(tagStrings []string) []Tag {
 	for i, tagName := range tagStrings {
 		tags[i] = Tag{
 			Name: tagName,
-			Uri:  "https://endoflife.date/api/v1/tags/" + tagName,
+			Uri:  tagBaseURL + tagName,
 		}
 	}
 	return tags

@@ -191,7 +191,7 @@ func lookupEolDate(idEol, version string) (string, bool, string) {
 	}
 
 	if len(prod) > 0 {
-		url := utilities.ApiUrl + "products/" + prod + "/releases/" + version
+		url := utilities.APIUrl + "products/" + prod + "/releases/" + version
 		resp, err := http.Get(url)
 		if err != nil {
 			log.Error().Err(err).Msgf("Error requesting %s", prod)
@@ -223,7 +223,7 @@ func lookupEolDate(idEol, version string) (string, bool, string) {
 			os.Exit(1)
 		}
 
-		url = utilities.ApiUrl + "products/" + prod
+		url = utilities.APIUrl + "products/" + prod
 		resp, err = http.Get(url)
 		if err != nil {
 			log.Error().Err(err).Msgf("Error requesting %s", prod)

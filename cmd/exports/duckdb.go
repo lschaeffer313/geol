@@ -148,7 +148,7 @@ func fetchAllProductData(cmd *cobra.Command) (*allProductsData, error) {
 	go func() {
 		for productName := range products.Products {
 			// Fetch basic product info
-			url := utilities.ApiUrl + "products/" + productName
+			url := utilities.APIUrl + "products/" + productName
 			resp, err := http.Get(url)
 			if err != nil {
 				log.Warn().Err(err).Msgf("Error requesting %s, skipping", productName)
@@ -230,7 +230,7 @@ func fetchAllProductData(cmd *cobra.Command) (*allProductsData, error) {
 // fetchAllCategories retrieves all categories from the API
 func fetchAllCategories() (map[string]utilities.Category, error) {
 	// Fetch categories from API
-	resp, err := http.Get(utilities.ApiUrl + "categories")
+	resp, err := http.Get(utilities.APIUrl + "categories")
 	if err != nil {
 		log.Error().Err(err).Msg("Error fetching categories")
 		return nil, err
@@ -262,7 +262,7 @@ func fetchAllCategories() (map[string]utilities.Category, error) {
 // fetchAllTags retrieves all tags from the API
 func fetchAllTags() (map[string]utilities.Tag, error) {
 	// Fetch tags from API
-	resp, err := http.Get(utilities.ApiUrl + "tags")
+	resp, err := http.Get(utilities.APIUrl + "tags")
 	if err != nil {
 		log.Error().Err(err).Msg("Error fetching tags")
 		return nil, err

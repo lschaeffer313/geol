@@ -34,7 +34,7 @@ func FetchAndSaveCategories(cmd *cobra.Command) error {
 		return err
 	}
 	// HTTP GET request (extracted)
-	resp, err := GetAPIResponse(ApiUrl + "categories")
+	resp, err := GetAPIResponse(APIUrl + "categories")
 	if err != nil {
 		log.Error().Err(err).Msg("Error during HTTP request")
 		return err
