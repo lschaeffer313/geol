@@ -1,0 +1,22 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+
+/* When the heading is hidden, add top spacing so descriptions align with other features */
+.noTitle p {
+  margin-top: 2.5rem;
+}
+
+/* Slightly reduce the image used when title is hidden so layout matches */
+.noTitle .featureSvg {
+  height: 120px;
+  width: 120px;
+}
