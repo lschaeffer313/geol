@@ -9,7 +9,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'geol',
-  tagline: 'Software End Of Life management is too important to be  boring ',
+  tagline: 'Software End Of Life management is too important to be boring',
   // Favicon (restored to original image)
   favicon: 'img/logo-no-name-gradient.png',
 
@@ -17,8 +17,8 @@ const config = {
     v4: true,
   },
 
-  url: 'https://your-docusaurus-site.example.com',
-  baseUrl: '/',
+  url: 'https://opt-nc.github.io',
+  baseUrl: '/geol/',
 
   organizationName: 'opt-nc',
   projectName: 'geol',
