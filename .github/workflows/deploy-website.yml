@@ -10,24 +10,29 @@ jobs:
   build:
     name: Build Docusaurus
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           fetch-depth: 0
       - uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
+          cache-dependency-path: _site/package-lock.json
 
       - name: Install dependencies
         run: npm ci
+        working-directory: _site
       - name: Build website
         run: npm run build
+        working-directory: _site
 
       - name: Upload Build Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
         with:
-          path: build
+          path: _site/build
 
   deploy:
     name: Deploy to GitHub Pages
