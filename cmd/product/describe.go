@@ -125,7 +125,7 @@ var describeCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		url := utilities.ApiUrl + "products/" + mainName
+		url := utilities.APIUrl + "products/" + mainName
 		resp, err = http.Get(url)
 		if err != nil {
 			log.Error().Err(err).Msgf("Error requesting %s", mainName)

@@ -48,7 +48,7 @@ geol tag canonical`,
 			log.Fatal().Msgf("Tag '%s' not found in cache", tag)
 		}
 
-		url := utilities.ApiUrl + "tags/" + tag
+		url := utilities.APIUrl + "tags/" + tag
 		resp, err := http.Get(url)
 		if err != nil {
 			log.Fatal().Err(err).Msgf("Error requesting tag '%s'", tag)

@@ -37,7 +37,7 @@ func EnsureCacheExistsGeneric(cachePath string, cmd *cobra.Command) (os.FileInfo
 	return info, nil
 }
 
-var ApiUrl = "https://endoflife.date/api/v1/"
+var APIUrl = "https://endoflife.date/api/v1/"
 
 func InitLogger(logLevel string) {
 	var level log.Level

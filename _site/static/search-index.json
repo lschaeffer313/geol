@@ -1,0 +1,236 @@
+[
+  {
+    "title": "Getting Started",
+    "text": "Getting Started Let's discover geol in less than 5 minutes. Get started by installing with brew. Note: Homebrew often provides more up-to-date packages than other sources, so installing via brew will typically give you a newer version. How to install? brew installed on your machine. See the official Homebrew website for installation instructions. brew install curl brew install --cask opt-nc/homebrew-tap/geol If your installed geol version is out of date, you can update it (Homebrew) with: Update Homebrew and upgrade the geol cask brew update && brew upgrade --cask geol Get geol version geol version Know a bit more about geol Displays a brief description and information about geol. geol about Get help Displays quick help and the main commands. geol help Shows the full man page: all commands and detailed help (includes the information from geol help). man geol",
+    "url": "/docs/intro/",
+    "summary": "Getting Started Let's discover geol in less than 5 minutes. Get started by installing with brew. Note: Homebrew often provides more up-to-date packages than other sources, so installing via brew will typically give you a newer version. How to install? brew installed on your machine. See the official",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "How to install?",
+    "text": "brew installed on your machine. See the official Homebrew website for installation instructions.",
+    "url": "/docs/intro/#how-to-install",
+    "summary": "brew installed on your machine. See the official Homebrew website for installation instructions.",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Get `geol` version",
+    "text": "geol version",
+    "url": "/docs/intro/#get-geol-version",
+    "summary": "geol version",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Know a bit more about `geol`",
+    "text": "Displays a brief description and information about geol. geol about",
+    "url": "/docs/intro/#know-a-bit-more-about-geol",
+    "summary": "Displays a brief description and information about geol. geol about",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Get help",
+    "text": "Displays quick help and the main commands. geol help",
+    "url": "/docs/intro/#get-help",
+    "summary": "Displays quick help and the main commands. geol help",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Learn the `check` command",
+    "text": "Learn the check command Quickly check your stack for end-of-life (EOL) statuses. The geol check command scans products from your .geol.yaml and reports support status and EOL dates. Get help for check Use geol help check to display help and available options for the check command. geol help check Initialize a check file Run the command to create a template .geol.yaml in the current directory: geol check init Edit the generated .geol.yaml to list the products you want to monitor. Minimal example .geol.yaml (created by geol check init): stack: - name: ubuntu version: \"25.10\" id_eol: ubuntu - name: java temurin version: \"21\" id_eol: eclipse-temurin name: non-existent-product version: \"1.0\" id_eol: non-existent-product skip: true Statuses and warnings Run the check to view statuses and warnings: geol check Use this flag to make geol check return a non-zero exit code when any product is past its EOL. geol check --strict Run the following command to print the exit status (a non-zero value indicates an error): echo $?",
+    "url": "/docs/tutorial-basics/check-command/",
+    "summary": "Learn the check command Quickly check your stack for end-of-life (EOL) statuses. The geol check command scans products from your .geol.yaml and reports support status and EOL dates. Get help for check Use geol help check to display help and available options for the check command. geol help check In",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Get help for `check`",
+    "text": "Use geol help check to display help and available options for the check command. geol help check",
+    "url": "/docs/tutorial-basics/check-command/#get-help-for-check",
+    "summary": "Use geol help check to display help and available options for the check command. geol help check",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Initialize a check file",
+    "text": "Run the command to create a template .geol.yaml in the current directory: geol check init",
+    "url": "/docs/tutorial-basics/check-command/#initialize-a-check-file",
+    "summary": "Run the command to create a template .geol.yaml in the current directory: geol check init",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Statuses and warnings",
+    "text": "Run the check to view statuses and warnings: geol check",
+    "url": "/docs/tutorial-basics/check-command/#statuses-and-warnings",
+    "summary": "Run the check to view statuses and warnings: geol check",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Congratulations!",
+    "text": "Congratulations! You have just learned the basics of geol geol has much more to offer! Have 5 more minutes? Take a look at asciidoc toolchain Anything unclear or buggy in this tutorial? Please report it! What's next? Read the official documentation",
+    "url": "/docs/tutorial-basics/congratulations/",
+    "summary": "Congratulations! You have just learned the basics of geol geol has much more to offer! Have 5 more minutes? Take a look at asciidoc toolchain Anything unclear or buggy in this tutorial? Please report it! What's next? Read the official documentation",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "What's next?",
+    "text": "Read the official documentation",
+    "url": "/docs/tutorial-basics/congratulations/#whats-next",
+    "summary": "Read the official documentation",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Know `endoflife.date` keys with geol",
+    "text": "Know endoflife.date keys with geol There are a lot of keys used by endoflife.date; they map products to metadata such as versions, release dates and end-of-life dates. Products A product is defined by the endoflife.date API; geol uses that API and does not define products itself (for example: Windows, Ubuntu, iPhone...). Show available product commands: geol help product List available products: geol list products To choose how many release cycles to display, use extended with the -n flag. For example ( with ubuntu ): geol product extended ubuntu -n20 Categories A category groups related products (for example: libraries, runtimes). geol list categories Tags A tag is a short keyword used to label and filter products. geol list tags",
+    "url": "/docs/tutorial-basics/deal-with-keys/",
+    "summary": "Know endoflife.date keys with geol There are a lot of keys used by endoflife.date; they map products to metadata such as versions, release dates and end-of-life dates. Products A product is defined by the endoflife.date API; geol uses that API and does not define products itself (for example: Window",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Products",
+    "text": "A product is defined by the endoflife.date API; geol uses that API and does not define products itself (for example: Windows, Ubuntu, iPhone...).",
+    "url": "/docs/tutorial-basics/deal-with-keys/#products",
+    "summary": "A product is defined by the endoflife.date API; geol uses that API and does not define products itself (for example: Windows, Ubuntu, iPhone...).",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Categories",
+    "text": "A category groups related products (for example: libraries, runtimes). geol list categories",
+    "url": "/docs/tutorial-basics/deal-with-keys/#categories",
+    "summary": "A category groups related products (for example: libraries, runtimes). geol list categories",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Tags",
+    "text": "A tag is a short keyword used to label and filter products. geol list tags",
+    "url": "/docs/tutorial-basics/deal-with-keys/#tags",
+    "summary": "A tag is a short keyword used to label and filter products. geol list tags",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "`Markdown` Features",
+    "text": "Markdown Features geol documentation supports standard Markdown features : it is optimized for Github-flavored variant. The pandoc toolchain pandoc is a document converter that can transform Markdown (which is useful for our workflow) and many other input formats into various output formats such as EPUB, PDF, DOCX, HTML, and more. Typical workflow: Requirements pandoc — install with Homebrew using the following command: brew install pandoc See https://pandoc.org/installing.html for more details. Produce and convert a report Produce geol-report.md with geol. For example, generate a description of Ubuntu and save it to a Markdown file: geol product describe ubuntu > geol-report.md This command also accepts multiple products — for example: geol product extended ubuntu linux windows > geol-report.md Convert the Markdown report to other formats with pandoc: This command converts the Markdown file into an EPUB e-book. pandoc geol-report.md -o geol-report.epub This command converts the Markdown file into a standalone HTML file (-s). pandoc geol-report.md -s -o geol-report.html This command converts the Markdown file into a PDF using XeLaTeX (--pdf-engine=xelatex) to generate the PDF output. pandoc geol-report.md -o geol-report.pdf --pdf-engine=xelatex",
+    "url": "/docs/tutorial-basics/markdown-features/",
+    "summary": "Markdown Features geol documentation supports standard Markdown features : it is optimized for Github-flavored variant. The pandoc toolchain pandoc is a document converter that can transform Markdown (which is useful for our workflow) and many other input formats into various output formats such as",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "The `pandoc` toolchain",
+    "text": "pandoc is a document converter that can transform Markdown (which is useful for our workflow) and many other input formats into various output formats such as EPUB, PDF, DOCX, HTML, and more. Typical workflow:",
+    "url": "/docs/tutorial-basics/markdown-features/#the-pandoc-toolchain",
+    "summary": "pandoc is a document converter that can transform Markdown (which is useful for our workflow) and many other input formats into various output formats such as EPUB, PDF, DOCX, HTML, and more. Typical ",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Requirements",
+    "text": "pandoc — install with Homebrew using the following command: brew install pandoc",
+    "url": "/docs/tutorial-basics/markdown-features/#requirements",
+    "summary": "pandoc — install with Homebrew using the following command: brew install pandoc",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Produce and convert a report",
+    "text": "Produce geol-report.md with geol. For example, generate a description of Ubuntu and save it to a Markdown file: geol product describe ubuntu > geol-report.md This command also accepts multiple products — for example: geol product extended ubuntu linux windows > geol-report.md",
+    "url": "/docs/tutorial-basics/markdown-features/#produce-and-convert-a-report",
+    "summary": "Produce geol-report.md with geol. For example, generate a description of Ubuntu and save it to a Markdown file: geol product describe ubuntu > geol-report.md This command also accepts multiple product",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Reporting products with `geol`",
+    "text": "Reporting products with geol geol fetches metadata for each product (versions, release dates, and end-of-life dates) and lets you generate summaries, version lists, or exportable reports. Get a product overview Displays detailed metadata for a product (description, version command,...); ubuntu is an example — replace it with any product name. geol product describe ubuntu This output is a summary of the information available on endoflife.date — for Ubuntu see https://endoflife.date/ubuntu.",
+    "url": "/docs/tutorial-basics/reporting-in-termial/",
+    "summary": "Reporting products with geol geol fetches metadata for each product (versions, release dates, and end-of-life dates) and lets you generate summaries, version lists, or exportable reports. Get a product overview Displays detailed metadata for a product (description, version command,...); ubuntu is an",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Get a product overview",
+    "text": "Displays detailed metadata for a product (description, version command,...); ubuntu is an example — replace it with any product name.",
+    "url": "/docs/tutorial-basics/reporting-in-termial/#get-a-product-overview",
+    "summary": "Displays detailed metadata for a product (description, version command,...); ubuntu is an example — replace it with any product name.",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "`asciidoc` Toolchain",
+    "text": "asciidoc Toolchain asciidoc lets you write human-readable documentation and convert it to HTML, PDF, or slides using tools like asciidoctor. Requirements asciidoctor — install with Homebrew using the following command: brew install asciidoc See https://asciidoctor.org/ for installation and options. Note: Asciidoctor often produces more polished rendering than Pandoc. Notes & workflow examples If you have a Markdown report (geol-report.md) you can: Convert to asciidoc with pandoc: pandoc geol-report.md -f markdown -t asciidoc -o geol-report.adoc Generate HTML from the .adoc input: asciidoctor -a toc -a toclevels=4 geol-report.adoc Generate PDF from the .adoc input: asciidoctor-pdf -a toc -a toclevels=4 geol-report.adoc",
+    "url": "/docs/tutorial-extras/asciidoc-toolchain/",
+    "summary": "asciidoc Toolchain asciidoc lets you write human-readable documentation and convert it to HTML, PDF, or slides using tools like asciidoctor. Requirements asciidoctor — install with Homebrew using the following command: brew install asciidoc See https://asciidoctor.org/ for installation and options.",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Notes & workflow examples",
+    "text": "If you have a Markdown report (geol-report.md) you can:",
+    "url": "/docs/tutorial-extras/asciidoc-toolchain/#notes-workflow-examples",
+    "summary": "If you have a Markdown report (geol-report.md) you can:",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Data Engineering with `geol`",
+    "text": "Data Engineering with geol Data Engineering with geol explains how to collect, normalize, and analyze product metadata (versions, release dates, end-of-life) for downstream analytics. It covers ingestion, storage, querying and exporting workflows (CSV, DuckDB) to build repeatable ETL pipelines and reports. Requirements duckdb — install with Homebrew using the following command: brew install duckdb See https://duckdb.org/ for more installation options and details. Export to DuckDB You can export product information to a DuckDB database using the following command: geol export file geol.duckdb This command produces the file geol.duckdb containing the exported product information. Basic DuckDB examples Show DuckDB help: duckdb -help Run a single SQL command (The tags table can be replaced with products, categories, ...) without opening the interactive CLI: duckdb geol.duckdb -c \"select * from tags;\" Open the database in the DuckDB CLI (opens geol.duckdb): duckdb geol.duckdb Inside the DuckDB CLI you can run SQL. For example, list tags: from tags; Count the number of products: select count(*) from products;",
+    "url": "/docs/tutorial-extras/dataengineering/",
+    "summary": "Data Engineering with geol Data Engineering with geol explains how to collect, normalize, and analyze product metadata (versions, release dates, end-of-life) for downstream analytics. It covers ingestion, storage, querying and exporting workflows (CSV, DuckDB) to build repeatable ETL pipelines and r",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Export to DuckDB",
+    "text": "You can export product information to a DuckDB database using the following command: geol export file geol.duckdb This command produces the file geol.duckdb containing the exported product information.",
+    "url": "/docs/tutorial-extras/dataengineering/#export-to-duckdb",
+    "summary": "You can export product information to a DuckDB database using the following command: geol export file geol.duckdb This command produces the file geol.duckdb containing the exported product information",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  },
+  {
+    "title": "Basic DuckDB examples",
+    "text": "Show DuckDB help: duckdb -help Run a single SQL command (The tags table can be replaced with products, categories, ...) without opening the interactive CLI: duckdb geol.duckdb -c \"select * from tags;\" Open the database in the DuckDB CLI (opens geol.duckdb): duckdb geol.duckdb Inside the DuckDB CLI you can run SQL. For example, list tags: from tags; Count the number of products: select count(*) from products;",
+    "url": "/docs/tutorial-extras/dataengineering/#basic-duckdb-examples",
+    "summary": "Show DuckDB help: duckdb -help Run a single SQL command (The tags table can be replaced with products, categories, ...) without opening the interactive CLI: duckdb geol.duckdb -c \"select * from tags;\"",
+    "tags": [],
+    "locale": "en",
+    "type": "docs"
+  }
+]

@@ -1,0 +1,374 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Small circular info icon used in docs */
+.info-circle {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+  cursor: help;
+  margin-left: 8px;
+}
+
+.info-circle[title] {
+  /* ensure native tooltip appears on hover */
+}
+
+/* Hide info icons in sidebars / table of contents, keep them in main content */
+/* Specific selectors to cover common Docusaurus sidebar / TOC containers */
+.table-of-contents .info-circle,
+.toc .info-circle,
+.menu__link .info-circle,
+.theme-doc-sidebar .info-circle,
+.docs-toc .info-circle {
+  display: none !important;
+}
+
+/* Ensure icons inside the page content remain visible */
+.theme-doc-markdown .info-circle {
+  display: inline-block !important;
+}
+
+/* Left sliding panel for menu triggered by hovering logo/brand */
+.left-panel-dropdown {
+  /* ensure dropdown anchor doesn't take extra space */
+}
+.left-panel-dropdown .dropdown__menu,
+.left-panel-dropdown .dropdown-menu {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 300px;
+  max-width: 80%;
+  margin: 0 !important;
+  padding: 1rem !important;
+  background: var(--ifm-background-color);
+  box-shadow: 2px 0 8px rgba(0,0,0,0.12);
+  transform: translateX(-100%);
+  transition: transform 240ms ease-in-out;
+  z-index: 9999;
+}
+
+/* Show panel when hovering the brand (logo/title) or the dropdown itself */
+.navbar__brand:hover ~ .navbar__items .left-panel-dropdown .dropdown__menu,
+.navbar__brand:hover ~ .navbar__items .left-panel-dropdown .dropdown-menu,
+.navbar__items .left-panel-dropdown:hover .dropdown__menu,
+.navbar__items .left-panel-dropdown:hover .dropdown-menu {
+  transform: translateX(0);
+}
+
+/* Also open the panel when the dropdown is programmatically shown (click/tap) or focused */
+.left-panel-dropdown.dropdown--show .dropdown__menu,
+.left-panel-dropdown.dropdown--show .dropdown-menu,
+.left-panel-dropdown:focus-within .dropdown__menu,
+.left-panel-dropdown:focus-within .dropdown-menu {
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+/* Ensure links inside are readable */
+.left-panel-dropdown .dropdown__menu a,
+.left-panel-dropdown .dropdown-menu a {
+  display: block;
+  padding: 8px 0;
+  color: var(--ifm-color-primary-dark);
+}
+
+@media (max-width: 768px) {
+  .left-panel-dropdown .dropdown__menu,
+  .left-panel-dropdown .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    height: auto;
+    width: auto;
+    box-shadow: none;
+  }
+}
+
+/* Center the navbar search box visually */
+.navbar {
+  position: relative;
+}
+.navbar .navbar__search {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .navbar .navbar__search {
+    position: static;
+    transform: none;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* Slightly reduce H3 size on the check-command doc so subheads are a bit smaller */
+body[class*="check-command"] .theme-doc-markdown h3 {
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+/* Hide specific EOL playground hint when requested (keeps content in source) */
+.hidden-eol {
+  display: none !important;
+}
+
+/* Make images non-selectable and non-draggable so they behave like background elements */
+.theme-doc-markdown img,
+.hero img,
+.navbar img,
+.site-logo img,
+.docMainContainer img,
+.markdown img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none; /* disable callout on long press */
+}
+
+/* Additionally prevent dragstart for images in browsers that still allow it */
+img[draggable="true"] { draggable: false; }
+
+
+/* Make footer labels and copyright non-selectable while keeping links clickable */
+.footer__copyright,
+.footer__link-item,
+.footer__title,
+.footer__bottom,
+.footer__item {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Make navbar text non-selectable but keep interactive controls usable */
+.navbar,
+.navbar .navbar__brand,
+.navbar .navbar__title,
+.navbar .navbar__items,
+.navbar .navbar__item,
+.navbar .navbar__link,
+.navbar .navbar__logo {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Allow selection inside form controls and search input */
+.navbar input,
+.navbar textarea,
+.navbar .navbar__search,
+.navbar .DocSearch,
+.navbar .DocSearch-Button,
+.navbar .DocSearch-Input {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+}
+
+/* Make the right-hand table of contents / releases sidebar non-selectable
+   while keeping links clickable */
+.table-of-contents,
+.toc,
+.menu__list,
+.menu__link,
+.theme-doc-sidebar,
+.docs-toc {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Ensure links inside the TOC remain clickable (user-select none doesn't
+   prevent clickability) but allow text selection inside any nested inputs */
+.table-of-contents a,
+.toc a,
+.menu__link a {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Show a single '#' anchor on hover for h2 headings in markdown content */
+.markdown h2 { position: relative; }
+.markdown h2 .hash-link,
+.markdown h2 a.anchor,
+.markdown h2 a.hash-link {
+  opacity: 0;
+  transition: opacity 120ms ease-in-out;
+  color: var(--ifm-color-primary-dark);
+  text-decoration: none;
+  margin-left: 0.25rem;
+}
+.markdown h2:hover .hash-link,
+.markdown h2:hover a.anchor,
+.markdown h2:focus-within .hash-link,
+.markdown h2:focus-within a.anchor {
+  opacity: 1;
+}
+
+/* Blog sidebar: prevent text selection like footer/docs */
+.blog-sidebar-no-select,
+.blog-sidebar-no-select * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Watermark overlay to discourage easy copying (non-destructive) */
+.hero,
+.features_t9lD {
+  position: relative;
+}
+.hero::after,
+.features_t9lD::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url('/img/watermark.svg');
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 180px 60px;
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+}
+
+@media (max-width: 768px) {
+  .hero::after, .features_t9lD::after { display: none; }
+}
+
+/* Hide the language label next to the language icon in the navbar.
+   Keep the icon visible and the dropdown items unchanged. */
+.theme-layout-navbar .navbar__item.dropdown > .navbar__link:has(.iconLanguage_nlXk) {
+  font-size: 0; /* hide adjacent text nodes */
+}
+.theme-layout-navbar .navbar__item.dropdown > .navbar__link:has(.iconLanguage_nlXk) svg {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Prefer a safe selector using the added navbar class `only-icon-locale` */
+.navbar__item.only-icon-locale > .navbar__link {
+  font-size: 0; /* hide adjacent text */
+}
+.navbar__item.only-icon-locale > .navbar__link svg {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Also handle case where the `only-icon-locale` class ends up on the anchor itself */
+.navbar__link.only-icon-locale {
+  font-size: 0; /* hide adjacent text nodes */
+}
+.navbar__link.only-icon-locale svg {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Nudge the locale icon slightly upward to align with the system mode toggle */
+.navbar__item.only-icon-locale > .navbar__link svg,
+.navbar__link.only-icon-locale svg {
+  transform: translateY(-4px);
+}
+
+
+/* Global keyboard focus outlines for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.navbar__link:focus-visible,
+.DocSearch-Button:focus-visible,
+.DocSearch-Input:focus-visible {
+  outline: 3px solid rgba(11,131,120,0.24);
+  outline-offset: 2px;
+}
+
+/* Ensure default interactive controls have visible borders in both themes */
+button, .button, .DocSearch-Button {
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+[data-theme='dark'] button,
+[data-theme='dark'] .button,
+[data-theme='dark'] .DocSearch-Button {
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Dark-theme focus variant for better visibility */
+[data-theme='dark'] button:focus-visible,
+[data-theme='dark'] a:focus-visible,
+[data-theme='dark'] input:focus-visible,
+[data-theme='dark'] select:focus-visible,
+[data-theme='dark'] textarea:focus-visible,
+[data-theme='dark'] .navbar__link:focus-visible,
+[data-theme='dark'] .DocSearch-Button:focus-visible,
+[data-theme='dark'] .DocSearch-Input:focus-visible {
+  outline: 3px solid rgba(139,211,199,0.22);
+  outline-offset: 2px;
+}
+
+
+
+

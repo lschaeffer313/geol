@@ -1,0 +1,43 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  /* Use a CSS gradient background to avoid external image dependency */
+  background-image: linear-gradient(90deg, #00ff00 0%, #99ff00 20%, #996600 50%, #ff3300 80%, #ff0000 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  /* Prevent text selection inside the hero (title, subtitle, etc.) */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    /* on small screens keep cover to avoid large empty areas */
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
